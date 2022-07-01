@@ -1,0 +1,100 @@
+/* UI DEFAULTS */
+:root{
+    --wireframe-outline-color: #46dd774d;
+    --wireframe-bg-color: #46dd770d;
+
+    --wireframe-border: 2px dashed var(--wireframe-outline-color);
+
+    --wireframe-box-shadow-small: 0 0 5px #00000044;
+    --wireframe-box-shadow-medium: 0 0 15px #00000044;
+    --wireframe-box-shadow-large: 0 0 25px #00000044;
+
+    --wpg-spacing-small: .5rem;
+    --wpg-spacing-medium: 1rem;
+    --wpg-spacing-large: 2rem;
+    --wpg-spacing-extra-large: 4rem;
+}
+
+/*
+UTILS
+ */
+.wpg-icon{
+    display: inline-block;
+}
+
+.wpg-fit-content{
+    width: fit-content;
+}
+.wpg-width-min-full{
+    width: 100%;
+}
+
+.wpg-align-self-start{
+    align-self: start;
+}
+.wpg-align-self-center{
+    align-self: center;
+}
+.wpg-align-self-end{
+    align-self: end;
+}
+
+.wpg-label-wrapper-with-icon{
+    display: flex;
+}
+
+
+/*##########################
+ WIDGETS
+ ##########################*/
+
+/**********************
+ --- Basic TipBar --- */
+
+/* Global Styles */
+.wpg_tooltip_basic{
+    display: flex;
+    flex-direction: column;
+}
+.wpg_tooltip_basic__label{
+    z-index: 2;
+    position: relative;
+    display: flex;
+    bottom: -1rem;
+    padding: var(--wpg-spacing-small);
+}
+
+.wpg_tooltip_basic__content{
+    padding: var(--wpg-spacing-medium);
+    padding-top: var(--wpg-spacing-large);
+}
+
+/* Wireframe Styles */
+.wpg_use_wireframe_styles .wpg_tooltip_basic__label{
+    border: var(--wireframe-border);
+    background-color: var(--wireframe-bg-color);
+    box-shadow: var(--wireframe-box-shadow-small);
+}
+.wpg_use_wireframe_styles .wpg_tooltip_basic__content {
+    border: var(--wireframe-border);
+    background-color: var(--wireframe-bg-color);
+    box-shadow: var(--wireframe-box-shadow-large);
+}
+
+
+/**********************
+ --- Basic Scroll Sequence --- */
+.wpg_scroll_sequence_basic{
+    line-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+.wpg_scroll_sequence_basic .image_item{
+    width: 100%; /* Default Width */
+}
+
+.wpg_scroll_sequence_basic.hide_sequence .image_item:nth-of-type(n+2){
+    position: absolute;
+    top: -10000px;
+   z-index: 1;
+}

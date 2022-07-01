@@ -1,0 +1,16 @@
+{
+    "name": "alan.blair/wpget-e-widgets",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "WPGet_Elementor_Widgets\\": "src/WPGet_Elementor_Widgets"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alan.Blair",
+            "email": "alan@wpget.net"
+        }
+    ],
+    "require": {}
+}

@@ -8,7 +8,15 @@
         this.scrollDirection = 'forward';
 
         this.methods.init = () => {
+            if(undefined === this.myContainerID || '' === this.myContainerID){
+                console.error("Error: ScrollSequence ContainerID not provided");
+                return false;
+            }
             this.targetSection = document.getElementById(this.myContainerID);
+            if(null === this.targetSection){
+                console.error("Error: ScrollSequence ContainerID is not valid");
+                return false;
+            }
             this.imageItems = this.targetSection.querySelectorAll('.image_item');
             this.imageCount = this.imageItems.length;
             this.currentImage = 0;
@@ -17,7 +25,7 @@
 
         const _updateItem = i => {
             this.currentImage = i;
-            _reset_image_styles();
+            _resetImageStyles();
             _preload();
             /* Show only the current image */
             const img = this.imageItems[i];
@@ -45,14 +53,35 @@
             }
         }
 
-        const _reset_image_styles = () => {
-            this.imageItems.forEach((el, i) => {
-
+        const _resetImageStyles = () => {
+            this.imageItems.forEach((el) => {
                 el.style.position = 'absolute';
                 el.style.top = '-10000px';
-
                 el.style.zIndex = '1';
             })
+        }
+
+        const _handleMouseScroll = e => {
+            let newItemIndex;
+            if (e.deltaY > 0) {
+                newItemIndex = this.currentImage + 1;
+                this.scrollDirection = 'forward';
+            } else {
+                newItemIndex = this.currentImage - 1;
+                this.scrollDirection = 'backward';
+            }
+            if(this.loop === 'yes'){
+                if(newItemIndex < 0){ newItemIndex = this.imageCount -1}
+                if(newItemIndex === this.imageCount){ newItemIndex = 0}
+            }
+
+            if (newItemIndex > -1 && newItemIndex < this.imageCount) {
+                e.preventDefault();
+                if (this.myScrollBehaviour !== false) {
+                    this.targetSection.scrollIntoView(this.myScrollBehaviour)
+                }
+                _updateItem(newItemIndex);
+            }
         }
 
         const _init = () => {
@@ -65,36 +94,13 @@
                 el.src = '';
             });
 
-            //Set positioning of all elements
+            //Set teh first frame as active
             _updateItem(0);
-
-            /*@todo look at chrome mouse event target lagging */
 
             /*
             Listen for mouse wheel
              */
-            this.targetSection.addEventListener('wheel', (e) => {
-                let newItemIndex;
-                if (e.deltaY > 0) {
-                    newItemIndex = this.currentImage + 1;
-                    this.scrollDirection = 'forward';
-                } else {
-                    newItemIndex = this.currentImage - 1;
-                    this.scrollDirection = 'backward';
-                }
-                if(this.loop === 'yes'){
-                    if(newItemIndex < 0){ newItemIndex = this.imageCount -1}
-                    if(newItemIndex === this.imageCount){ newItemIndex = 0}
-                }
-
-                if (newItemIndex > -1 && newItemIndex < this.imageCount) {
-                    e.preventDefault();
-                    if (this.myScrollBehaviour !== false) {
-                        this.targetSection.scrollIntoView(this.myScrollBehaviour)
-                    }
-                    _updateItem(newItemIndex);
-                }
-            })
+            this.targetSection.addEventListener('wheel', _handleMouseScroll )
         }
     }
 

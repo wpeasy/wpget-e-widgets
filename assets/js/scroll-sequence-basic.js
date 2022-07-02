@@ -71,8 +71,12 @@
                 this.scrollDirection = 'backward';
             }
             if(this.loop === 'yes'){
-                if(newItemIndex < 0){ newItemIndex = this.imageCount -1}
-                if(newItemIndex === this.imageCount){ newItemIndex = 0}
+                if(newItemIndex < 0){
+                    newItemIndex = this.imageCount -1;
+                }
+                if(newItemIndex === this.imageCount){
+                    newItemIndex = 0;
+                }
             }
 
             if (newItemIndex > -1 && newItemIndex < this.imageCount) {

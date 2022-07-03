@@ -1,12 +1,22 @@
 ;(w => {
-    function ScrollSequence(containerID, scrollBehaviour = {behavior: "smooth", block: "center"}, loop = '', preloadFrames = 10) {
-        this.myContainerID = containerID;
-        this.myScrollBehaviour = scrollBehaviour;
-        this.methods = {};
-        this.preloadFrames = preloadFrames;
-        this.loop =loop;
-        this.scrollDirection = 'forward';
+    function ScrollSequence(
+        containerID,
+        scrollBehaviour = {behavior: "smooth", block: "center"},
+        loop = '',
+        preloadFrames = 10
+    ) {
+        this.myContainerID = containerID; /* ID of the container to attach wheel and touch events to */
+        this.myScrollBehaviour = scrollBehaviour; /* Object to use as a property for element.scrollIntoView(obj) */
+        this.methods = {}; /* Object to place public methods in */
+        this.preloadFrames = preloadFrames; /* Number of frames to preload for smooth stepping */
+        this.loop = loop; /* If "yes" loops past end frames */
+        this.scrollDirection = 'forward'; /* Not currently used */
 
+        /*@todo move to a function property */
+        this.touchDebounceTimeMs = 10; /* Debounce ms for Touch move event */
+        this.touchDebounceLastTrigger = 0;
+
+        /* Public Methods */
         this.methods.init = () => {
             if(undefined === this.myContainerID || '' === this.myContainerID){
                 console.error("Error: ScrollSequence ContainerID not provided");
@@ -23,17 +33,16 @@
             _init();
         }
 
-        const _updateItem = i => {
-            this.currentImage = i;
+        /*
+        Private methods
+         */
+        const _updateItem = () => {
             _resetImageStyles();
             _preload();
             /* Show only the current image */
-            const img = this.imageItems[i];
+            const img = this.imageItems[this.currentImage];
             //Set styles
-            img.style.zIndex = 99;
-            img.style.position = 'relative';
-            img.style.top = '0';
-            img.style.left = '0';
+            img.classList.add('active');
 
         }
 
@@ -51,13 +60,14 @@
                     img.src = img.getAttribute('data-src');
                 }
             }
+            //preload las image as well, in case the user scolls backwards
+            const lastImg = this.imageItems[this.imageCount -1];
+            lastImg.src = lastImg.getAttribute('data-src');
         }
 
         const _resetImageStyles = () => {
             this.imageItems.forEach((el) => {
-                el.style.position = 'absolute';
-                el.style.top = '-10000px';
-                el.style.zIndex = '1';
+                el.classList.remove('active');
             })
         }
 
@@ -70,22 +80,75 @@
                 newItemIndex = this.currentImage - 1;
                 this.scrollDirection = 'backward';
             }
-            if(this.loop === 'yes'){
-                if(newItemIndex < 0){
-                    newItemIndex = this.imageCount -1;
-                }
-                if(newItemIndex === this.imageCount){
-                    newItemIndex = 0;
-                }
+            const next = _shouldLoop(newItemIndex);
+            if(false !== next){
+                this.currentImage = next;
+                e.preventDefault();
+                _advanceFrame();
+            }
+        }
+
+        const _handleTouchMove = e => {
+            /*
+            If elapsed ms is less than this.touchDebounceTimeMs, just return.
+             */
+            const currentMs = Date.now() ;
+            const elapsed = currentMs - this.touchDebounceLastTrigger;
+            if(elapsed < this.touchDebounceTimeMs){
+                if(this.touchActive) { e.preventDefault() }
+                return true;
             }
 
-            if (newItemIndex > -1 && newItemIndex < this.imageCount) {
-                e.preventDefault();
-                if (this.myScrollBehaviour !== false) {
-                    this.targetSection.scrollIntoView(this.myScrollBehaviour)
-                }
-                _updateItem(newItemIndex);
+            /*
+            Otherwise, time is debounced.
+             */
+            this.touchDebounceLastTrigger = currentMs;
+            let newItemIndex;
+            const {clientY} = e.changedTouches[0];
+            if(undefined === this.lastTouchY) { this.lastTouchY = clientY}
+            const delta = this.lastTouchY - clientY;
+            this.lastTouchY = clientY;
+
+            if(delta > 0){
+                newItemIndex = this.currentImage - 1;
+                this.scrollDirection = 'backward';
+            }else{
+                newItemIndex = this.currentImage + 1;
+                this.scrollDirection = 'forward';
             }
+
+            const next = _shouldLoop(newItemIndex);
+            if(false !== next){
+                this.currentImage = next;
+                e.preventDefault();
+                console.info('frame: ' + next)
+                _advanceFrame();
+            }
+        }
+
+        const _shouldLoop = i => {
+            if(this.loop === 'yes'){
+                if(i < 0){
+                    i = this.imageCount -1;
+                }
+                if(i === this.imageCount){
+                    i = 0;
+                }
+            }else{
+                if(i < 0 || i > this.imageCount -1){
+                    return false;
+                }
+            }
+            return i;
+        }
+
+        const _advanceFrame = () => {
+            if (this.myScrollBehaviour !== false) {
+                this.targetSection.scrollIntoView(this.myScrollBehaviour)
+            }
+            const evt = new CustomEvent('wpe/ScrollSequence/frame', {detail: {id: this.myContainerID, frame: this.currentImage}});
+            w.dispatchEvent(evt);
+            _updateItem();
         }
 
         const _init = () => {
@@ -93,18 +156,27 @@
             this.targetSection.style.overflow = "hidden";
 
             //Parse src to data-src . Done here so Elementor preview shows images
+            //We want to jus show images in teh Elementor Editor
+            //Want to only load the "preloadFrames" number of images in the frontend
             this.imageItems.forEach( el => {
                 el.setAttribute('data-src', el.src);
                 el.src = '';
             });
 
-            //Set teh first frame as active
+            //Set the first frame as active
             _updateItem(0);
 
             /*
             Listen for mouse wheel
              */
-            this.targetSection.addEventListener('wheel', _handleMouseScroll )
+            this.targetSection.addEventListener('wheel', _handleMouseScroll );
+            this.targetSection.addEventListener('touchmove', _handleTouchMove );
+            this.targetSection.addEventListener('touchstart', e => {
+                this.touchActive = true;
+            } );
+            this.targetSection.addEventListener('touchend', e => {
+                this.touchActive = false;
+            } );
         }
     }
 
@@ -114,5 +186,7 @@
     w.wpe.ScrollSequence = ScrollSequence;
     const event = new Event('wpe/ScrollSequence/load');
     w.dispatchEvent(event);
+
+    w.addEventListener('wpe/ScrollSequence/frame' , (e)=> { console.log(e)})
 
 })(window);

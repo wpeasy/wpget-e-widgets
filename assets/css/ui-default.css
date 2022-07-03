@@ -1,5 +1,5 @@
 /* UI DEFAULTS */
-:root{
+:root {
     --wireframe-outline-color: #46dd774d;
     --wireframe-bg-color: #46dd770d;
 
@@ -18,28 +18,31 @@
 /*
 UTILS
  */
-.wpg-icon{
+.wpg-icon {
     display: inline-block;
 }
 
-.wpg-fit-content{
+.wpg-fit-content {
     width: fit-content;
 }
-.wpg-width-min-full{
+
+.wpg-width-min-full {
     width: 100%;
 }
 
-.wpg-align-self-start{
+.wpg-align-self-start {
     align-self: start;
 }
-.wpg-align-self-center{
+
+.wpg-align-self-center {
     align-self: center;
 }
-.wpg-align-self-end{
+
+.wpg-align-self-end {
     align-self: end;
 }
 
-.wpg-label-wrapper-with-icon{
+.wpg-label-wrapper-with-icon {
     display: flex;
 }
 
@@ -52,11 +55,12 @@ UTILS
  --- Basic TipBar --- */
 
 /* Global Styles */
-.wpg_tooltip_basic{
+.wpg_tooltip_basic {
     display: flex;
     flex-direction: column;
 }
-.wpg_tooltip_basic__label{
+
+.wpg_tooltip_basic__label {
     z-index: 2;
     position: relative;
     display: flex;
@@ -64,17 +68,18 @@ UTILS
     padding: var(--wpg-spacing-small);
 }
 
-.wpg_tooltip_basic__content{
+.wpg_tooltip_basic__content {
     padding: var(--wpg-spacing-medium);
     padding-top: var(--wpg-spacing-large);
 }
 
 /* Wireframe Styles */
-.wpg_use_wireframe_styles .wpg_tooltip_basic__label{
+.wpg_use_wireframe_styles .wpg_tooltip_basic__label {
     border: var(--wireframe-border);
     background-color: var(--wireframe-bg-color);
     box-shadow: var(--wireframe-box-shadow-small);
 }
+
 .wpg_use_wireframe_styles .wpg_tooltip_basic__content {
     border: var(--wireframe-border);
     background-color: var(--wireframe-bg-color);
@@ -84,17 +89,34 @@ UTILS
 
 /**********************
  --- Basic Scroll Sequence --- */
-.wpg_scroll_sequence_basic{
+.wpg_scroll_sequence_basic {
     line-height: 0;
     position: relative;
     overflow: hidden;
 }
-.wpg_scroll_sequence_basic .image_item{
+
+.wpg_scroll_sequence_basic .image_item {
     width: 100%; /* Default Width */
 }
 
-.wpg_scroll_sequence_basic.hide_sequence .image_item:nth-of-type(n+2){
+/*
+Editor only, switch to hide/show image frames
+ */
+.elementor-editor-active .wpg_scroll_sequence_basic.hide_sequence .image_item:nth-of-type(n+2) {
     position: absolute;
     top: -10000px;
-   z-index: 1;
+    z-index: 1;
+}
+
+.wpg_scroll_sequence_basic.hide_sequence .image_item {
+    position: absolute;
+    top: -10000px;
+    z-index: 1;
+}
+/* Make active image position relative so it fills the container space */
+.wpg_scroll_sequence_basic .image_item.active {
+    z-index: 99;
+    position: relative;
+    top: 0;
+    left: 0;
 }

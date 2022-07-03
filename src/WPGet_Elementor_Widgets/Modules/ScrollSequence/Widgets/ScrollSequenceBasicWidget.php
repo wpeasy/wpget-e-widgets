@@ -170,7 +170,7 @@ class ScrollSequenceBasicWidget extends Widget_Base
     }
 
     protected function render() {
-        wp_enqueue_script('wpe-scroll-sequence');
+        wp_enqueue_script('wpg-scroll-sequence');
         $settings = $this->get_settings_for_display();
         $wrapper_main = ['wpg_scroll_sequence_basic'];
         $wrapper_main[] = 'hide_sequence';
@@ -196,8 +196,8 @@ class ScrollSequenceBasicWidget extends Widget_Base
             <?= $images ?>
         </div>
         <script>
-            window.addEventListener('wpe/ScrollSequence/load', ()=>{
-                const el = new window.wpe.ScrollSequence(
+            window.addEventListener('wpg/ScrollSequence/load', ()=>{
+                const el = new window.wpg.ScrollSequence(
                     "<?= $settings['wrapper_container_id'] ?>",
                     <?= $confJSON ?>,
                     "<?= $frameLoop ?>",

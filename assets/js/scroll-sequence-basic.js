@@ -146,7 +146,7 @@
             if (this.myScrollBehaviour !== false) {
                 this.targetSection.scrollIntoView(this.myScrollBehaviour)
             }
-            const evt = new CustomEvent('wpe/ScrollSequence/frame', {detail: {id: this.myContainerID, frame: this.currentImage}});
+            const evt = new CustomEvent('wpg/ScrollSequence/frame', {detail: {id: this.myContainerID, frame: this.currentImage}});
             w.dispatchEvent(evt);
             _updateItem();
         }
@@ -180,13 +180,13 @@
         }
     }
 
-    if (w.wpe === undefined) {
-        w.wpe = {};
+    if (w.wpg === undefined) {
+        w.wpg = {};
     }
-    w.wpe.ScrollSequence = ScrollSequence;
-    const event = new Event('wpe/ScrollSequence/load');
+    w.wpg.ScrollSequence = ScrollSequence;
+    const event = new Event('wpg/ScrollSequence/load');
     w.dispatchEvent(event);
 
-    w.addEventListener('wpe/ScrollSequence/frame' , (e)=> { console.log(e)})
+    w.addEventListener('wpg/ScrollSequence/frame' , (e)=> { console.log(e)})
 
 })(window);

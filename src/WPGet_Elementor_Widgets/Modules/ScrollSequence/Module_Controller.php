@@ -29,6 +29,6 @@ class Module_Controller
     }
 
     public function wp_enqueue_scripts(){
-        wp_register_script('wpe-scroll-sequence', WPG_WIDGETS_URL . 'assets/js/scroll-sequence-basic.js');
+        wp_register_script('wpg-scroll-sequence', WPG_WIDGETS_URL . 'assets/js/scroll-sequence-basic.js');
     }
 }

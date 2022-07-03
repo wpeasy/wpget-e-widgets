@@ -1,4 +1,6 @@
-/* UI DEFAULTS */
+/* #########################
+   UI Defaults
+############################*/
 :root {
     --wireframe-outline-color: #46dd774d;
     --wireframe-bg-color: #46dd770d;
@@ -15,9 +17,9 @@
     --wpg-spacing-extra-large: 4rem;
 }
 
-/*
-UTILS
- */
+/* #########################
+   UTILS
+############################*/
 .wpg-icon {
     display: inline-block;
 }
@@ -49,7 +51,7 @@ UTILS
 
 /*##########################
  WIDGETS
- ##########################*/
+##########################*/
 
 /**********************
  --- Basic TipBar --- */
@@ -89,6 +91,8 @@ UTILS
 
 /**********************
  --- Basic Scroll Sequence --- */
+
+/* Overflow hidden so we can position inactive frames outside of the  container */
 .wpg_scroll_sequence_basic {
     line-height: 0;
     position: relative;
@@ -108,6 +112,11 @@ Editor only, switch to hide/show image frames
     z-index: 1;
 }
 
+/*
+Using positioning and top to hide non-active images.
+I tried "display:none", Chrome will not preload images with display set to none.
+This requires the parent container overflow set to hidden.
+ */
 .wpg_scroll_sequence_basic.hide_sequence .image_item {
     position: absolute;
     top: -10000px;

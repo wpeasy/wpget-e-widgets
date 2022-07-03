@@ -137,7 +137,7 @@ class BasicTipBarWidget extends Widget_Base
                     'size' => -0.5,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__label' => 'bottom: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .wpg_tipbar_basic__label' => 'bottom: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -146,7 +146,7 @@ class BasicTipBarWidget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'title_typography',
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__label',
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__label',
             ]
         );
 
@@ -156,7 +156,7 @@ class BasicTipBarWidget extends Widget_Base
                 'label' => esc_html__('Title Color', WPG_WIDGETS_TEXT_DOMAIN),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__label' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .wpg_tipbar_basic__label' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -165,7 +165,7 @@ class BasicTipBarWidget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'label_background',
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__label',
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__label',
             ]
         );
 
@@ -173,7 +173,7 @@ class BasicTipBarWidget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'label_border',
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__label',
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__label',
             ]
         );
         $this->add_control(
@@ -191,7 +191,7 @@ class BasicTipBarWidget extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .wpg_tipbar_basic__label' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]
         );
@@ -201,7 +201,7 @@ class BasicTipBarWidget extends Widget_Base
             [
                 'name' => 'label_box_shadow',
                 'label' => esc_html__('Box Shadow', WPG_WIDGETS_PLUGIN_BASE),
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__label'
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__label'
             ]
         );
 
@@ -220,7 +220,7 @@ class BasicTipBarWidget extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .wpg_tipbar_basic__label' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]
         );
@@ -272,7 +272,7 @@ class BasicTipBarWidget extends Widget_Base
                     'size' => 0,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__label .wpg-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .wpg_tipbar_basic__label .wpg-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -283,7 +283,7 @@ class BasicTipBarWidget extends Widget_Base
                 'label' => esc_html__('Icon Color', WPG_WIDGETS_TEXT_DOMAIN),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__label .wpg-icon' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .wpg_tipbar_basic__label .wpg-icon' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -306,7 +306,7 @@ class BasicTipBarWidget extends Widget_Base
             Group_Control_Typography::get_type(),
             [
                 'name' => 'content_typography',
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__content',
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__content',
             ]
         );
 
@@ -316,7 +316,7 @@ class BasicTipBarWidget extends Widget_Base
                 'label' => esc_html__('Content Color', WPG_WIDGETS_TEXT_DOMAIN),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__content' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .wpg_tipbar_basic__content' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -325,7 +325,7 @@ class BasicTipBarWidget extends Widget_Base
             Group_Control_Background::get_type(),
             [
                 'name' => 'content_background',
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__content',
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__content',
             ]
         );
 
@@ -333,7 +333,7 @@ class BasicTipBarWidget extends Widget_Base
             Group_Control_Border::get_type(),
             [
                 'name' => 'content_border',
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__content',
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__content',
             ]
         );
         $this->add_control(
@@ -351,7 +351,7 @@ class BasicTipBarWidget extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .wpg_tipbar_basic__content' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]
         );
@@ -361,7 +361,7 @@ class BasicTipBarWidget extends Widget_Base
             [
                 'name' => 'content_box_shadow',
                 'label' => esc_html__('Box Shadow', WPG_WIDGETS_PLUGIN_BASE),
-                'selector' => '{{WRAPPER}} .wpg_tooltip_basic__content'
+                'selector' => '{{WRAPPER}} .wpg_tipbar_basic__content'
             ]
         );
 
@@ -380,7 +380,7 @@ class BasicTipBarWidget extends Widget_Base
                     'isLinked' => true,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .wpg_tooltip_basic__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .wpg_tipbar_basic__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]
         );
@@ -394,10 +394,10 @@ class BasicTipBarWidget extends Widget_Base
         wp_enqueue_style('elementor-icons-fa-solid');
 
         $settings = $this->get_settings_for_display();
-        $wrapper_main = ['wpg_tooltip_basic'];
-        $wrapper_label = ['wpg_tooltip_basic__label', 'wpg-label-wrapper-with-icon'];;
+        $wrapper_main = ['wpg_tipbar_basic'];
+        $wrapper_label = ['wpg_tipbar_basic__label', 'wpg-label-wrapper-with-icon'];;
 
-        $content_wrapper = ['wpg_tooltip_basic__content'];
+        $content_wrapper = ['wpg_tipbar_basic__content'];
 
         @$settings['label_width'] === 'yes' ? $wrapper_label[] = 'wpg-width-min-full' : $wrapper_label[] = 'wpg-fit-content';
         @$settings['label_align'] === 'left' && $wrapper_label[] = 'wpg-align-self-start';
@@ -430,9 +430,9 @@ class BasicTipBarWidget extends Widget_Base
     {
         ?>
         <#
-        let wrapperMain = ['wpg_tooltip_basic'];
-        let wrapperLabel = ['wpg_tooltip_basic__label'];
-        let wrapperContent = ['wpg_tooltip_basic__content'];
+        let wrapperMain = ['wpg_tipbar_basic'];
+        let wrapperLabel = ['wpg_tipbar_basic__label'];
+        let wrapperContent = ['wpg_tipbar_basic__content'];
 
 
         //Label

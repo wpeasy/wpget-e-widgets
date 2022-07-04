@@ -1,6 +1,6 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Modules\PageSettingsGeneral;
+namespace WPGet_Elementor_Widgets\Modules\Page_Settings_General;
 
 use Elementor\Plugin;
 use WPGet_Elementor_Widgets\Helper\ElementorHelper;
@@ -28,7 +28,11 @@ class Module_Controller
     {
         $post_id = get_the_ID();
         $document = Plugin::$instance->documents->get($post_id, false);
-        $state = $document->get_settings('wpg_use_wireframe_styles');
+        $state = null;
+        if($document){
+            $state = $document->get_settings('wpg_use_wireframe_styles');
+        }
+
         if($state == 'yes'){
             $classes[] = 'wpg_use_wireframe_styles';
         }

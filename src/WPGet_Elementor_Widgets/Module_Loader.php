@@ -18,7 +18,6 @@ class Module_Loader
         $this->load_modules();
     }
 
-
     public function load_modules()
     {
         $sub_dirs = scandir(WPG_WIDGETS_MODULE_DIR);
@@ -28,7 +27,13 @@ class Module_Loader
 
             //@todo add logic to load only if enabled
             $class_name =  __NAMESPACE__ . '\\Modules\\' . $dir . '\\'. 'Module_Controller';
-            $class_name::instance();
+
+            if(class_exists($class_name)){
+                $class_name::instance();
+            }else{
+                // report warning here.
+            }
+
         }
 
     }

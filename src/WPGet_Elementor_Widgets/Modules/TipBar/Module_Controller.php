@@ -2,7 +2,7 @@
 
 namespace WPGet_Elementor_Widgets\Modules\TipBar;
 use Elementor\Plugin;
-use WPGet_Elementor_Widgets\Modules\TipBar\Widgets\BasicTipBarWidget;
+use WPGet_Elementor_Widgets\Modules\TipBar\Widgets\Basic_TipBar_Widget;
 
 class Module_Controller
 {
@@ -22,7 +22,7 @@ class Module_Controller
 
     public function register_widgets()
     {
-        $basic = new BasicTipBarWidget();
+        $basic = new Basic_TipBar_Widget();
         Plugin::instance()->widgets_manager->register($basic);
     }
 }

@@ -1,4 +1,4 @@
-;(w => {
+;((w,$)=> {
     function ScrollSequence(
         containerID,
         scrollBehaviour = {behavior: "smooth", block: "center"},
@@ -180,6 +180,10 @@
         }
     }
 
+    /*
+    Note: none of this script runs in the editor
+     */
+
     if (w.wpg === undefined) {
         w.wpg = {};
     }
@@ -187,6 +191,8 @@
     const event = new Event('wpg/ScrollSequence/load');
     w.dispatchEvent(event);
 
-    w.addEventListener('wpg/ScrollSequence/frame' , (e)=> { console.log(e)})
+    /* w.addEventListener('wpg/ScrollSequence/frame' , (e)=> { console.log(e)}); */
 
-})(window);
+})(window, jQuery);
+
+

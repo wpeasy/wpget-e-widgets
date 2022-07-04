@@ -5,6 +5,16 @@ namespace WPGet_Elementor_Widgets\Helper;
 class ElementorHelper
 {
 
+    public static function is_elementor_active()
+    {
+        return is_plugin_active( 'elementor/elementor.php' );
+    }
+
+    public static function is_elementor_pro_active()
+    {
+        return is_plugin_active( 'elementor-pro/elementor-pro.php' );
+    }
+
     public static function is_edit_mode()
     {
         if (isset($_REQUEST['elementor-preview'])) {

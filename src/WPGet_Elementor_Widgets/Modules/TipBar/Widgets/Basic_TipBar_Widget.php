@@ -10,7 +10,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Icons_Manager;
 use Elementor\Widget_Base;
 
-class BasicTipBarWidget extends Widget_Base
+class Basic_TipBar_Widget extends Widget_Base
 {
 
     public function get_name()

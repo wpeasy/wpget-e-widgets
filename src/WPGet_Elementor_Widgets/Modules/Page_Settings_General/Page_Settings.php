@@ -1,6 +1,6 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Modules\PageSettingsGeneral;
+namespace WPGet_Elementor_Widgets\Modules\Page_Settings_General;
 
 use Elementor\Controls_Manager;
 use Elementor\Core\DocumentTypes\PageBase;
@@ -31,7 +31,7 @@ class Page_Settings
         $element->start_controls_section(
             'wpg_page_settings',
             [
-                'label' => __('WPGet Settings', WPG_WIDGETS_TEXT_DOMAIN),
+                'label' => __('WPGet SiteSettings', WPG_WIDGETS_TEXT_DOMAIN),
                 'tab' => Controls_Manager::TAB_SETTINGS,
             ]
         );

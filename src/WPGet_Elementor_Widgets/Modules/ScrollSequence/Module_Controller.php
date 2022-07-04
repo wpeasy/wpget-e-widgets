@@ -3,7 +3,7 @@
 namespace WPGet_Elementor_Widgets\Modules\ScrollSequence;
 
 use Elementor\Plugin;
-use WPGet_Elementor_Widgets\Modules\ScrollSequence\Widgets\ScrollSequenceBasicWidget;
+use WPGet_Elementor_Widgets\Modules\ScrollSequence\Widgets\Scroll_Sequence_Basic_Widget;
 
 class Module_Controller
 {
@@ -19,16 +19,14 @@ class Module_Controller
     public function __construct()
     {
         add_action('elementor/widgets/widgets_registered' , [$this, 'register_widgets']);
-        add_action('wp_enqueue_scripts', [$this, 'wp_enqueue_scripts']);
     }
 
     public function register_widgets()
     {
-        $basic = new ScrollSequenceBasicWidget();
+        $basic = new Scroll_Sequence_Basic_Widget();
         Plugin::instance()->widgets_manager->register($basic);
     }
 
-    public function wp_enqueue_scripts(){
-        wp_register_script('wpg-scroll-sequence', WPG_WIDGETS_URL . 'assets/js/scroll-sequence-basic.js');
-    }
+
+
 }

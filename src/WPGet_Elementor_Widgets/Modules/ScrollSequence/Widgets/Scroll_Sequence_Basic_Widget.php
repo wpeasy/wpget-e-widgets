@@ -5,8 +5,18 @@ namespace WPGet_Elementor_Widgets\Modules\ScrollSequence\Widgets;
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
 
-class ScrollSequenceBasicWidget extends Widget_Base
+class Scroll_Sequence_Basic_Widget extends Widget_Base
 {
+
+    public function __construct($data = [], $args = null)
+    {
+        parent::__construct($data, $args);
+        wp_register_script('wpg-scroll-sequence', WPG_WIDGETS_URL . 'assets/js/scroll-sequence-basic.js');
+    }
+
+    public function get_script_depends() {
+        return [ 'wpg-scroll-sequence' ];
+    }
 
     public function get_name()
     {
@@ -26,6 +36,11 @@ class ScrollSequenceBasicWidget extends Widget_Base
     public function get_categories()
     {
         return ['wpget'];
+    }
+
+    public function get_keywords()
+    {
+        return ['scroll', 'sequence'];
     }
 
     protected function _register_controls()
@@ -170,10 +185,10 @@ class ScrollSequenceBasicWidget extends Widget_Base
     }
 
     protected function render() {
-        wp_enqueue_script('wpg-scroll-sequence');
+
         $settings = $this->get_settings_for_display();
         $wrapper_main = ['wpg_scroll_sequence_basic'];
-        $wrapper_main[] = 'hide_sequence';
+        @$settings['hide_sequence'] == 'yes' && $wrapper_main[] = 'hide_sequence';
         $this->add_render_attribute('wrapper_main', ['class' => $wrapper_main]);
 
         $config = false;
@@ -186,7 +201,6 @@ class ScrollSequenceBasicWidget extends Widget_Base
 
         $images = '';
         foreach ( $settings['scroll_gallery'] as $image ) {
-            /* JS will move src to data-src. Not done here as it will break teh view in the Elementor Editor. */
             $images.= '<img class="image_item nolazy" src="' . esc_attr( $image['url'] ) . '">' . "\r\n";
         }
 
@@ -210,23 +224,6 @@ class ScrollSequenceBasicWidget extends Widget_Base
     }
 
     protected function content_template() {
-        ?>
-        <#
-        let wrapperMain = ['wpg_scroll_sequence_basic'];
-        if(settings.hide_sequence === 'yes') {
-            wrapperMain.push('hide_sequence')
-        }
-
-        view.addRenderAttribute('wrapper_main', 'class' , wrapperMain);
-        #>
-
-        <div {{{ view.getRenderAttributeString( 'wrapper_main' ) }}}">
-            <# _.each( settings.scroll_gallery, function( image ) { #>
-            <img class="image_item" src="{{ image.url }}">
-            <# }); #>
-        </div>
-
-
-        <?php
+        /* Not needed because we don't edit content in the editor window */
     }
 }

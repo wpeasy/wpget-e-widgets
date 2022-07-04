@@ -21,7 +21,7 @@ class Site_Settings extends Tab_Base
     }
 
     public function get_icon() {
-        return 'wpg-widget-icon-site-settings';
+        return 'wpg-site-settings-icon';
     }
 
     public function get_group() {
@@ -38,11 +38,11 @@ class Site_Settings extends Tab_Base
             ]
         );
         $this->add_control(
-            'woocommerce_pages_intro',
+            'branding_icon',
             [
-                'raw' => esc_html__( 'Select the pages you want to use as your default WooCommerce shop pages', 'elementor-pro' ),
-                'type' => Controls_Manager::RAW_HTML,
-                'content_classes' => 'elementor-descriptor',
+                'label' => esc_html__('Brand Icon', WPG_WIDGETS_TEXT_DOMAIN),
+                'type' => Controls_Manager::MEDIA,
+                'description' => 'SVG Brand Icon'
             ]
         );
         $this->end_controls_section();

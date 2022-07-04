@@ -3,7 +3,7 @@
  * Plugin Name:       WPGet Elementor Widgets
  * Plugin URI:        https://www.wpget.net
  * Description:       Common Widgets by WPGet
- * Version:           0.0.3
+ * Version:           0.0.4
  * Author:            Alan Blair
  * Author URI:        https://www.wpget.net
  * License:           GPL v2 or later
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
 
-define( 'WPG_WIDGETS_VERSION', '0.0.3' );
+define( 'WPG_WIDGETS_VERSION', '0.0.4' );
 define( 'WPG_WIDGETS__FILE__', __FILE__ );
 define( 'WPG_WIDGETS_PLUGIN_BASE', plugin_basename( WPG_WIDGETS__FILE__ ) );
 define( 'WPG_WIDGETS_PATH', plugin_dir_path( WPG_WIDGETS__FILE__ ) );

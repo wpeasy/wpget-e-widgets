@@ -49,4 +49,6 @@ class Application
         wp_enqueue_style('wpg-style-widgets', WPG_WIDGETS_URL . 'assets/css/ui-default.css');
     }
 
+
+
 }

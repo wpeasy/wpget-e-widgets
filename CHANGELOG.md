@@ -35,3 +35,9 @@ window.addEventListener('wpg/ScrollSequence/frame', e => {
 ### Fixes
 - Renamed all incorrect namings of 'wpe' to 'wpg'
 - Renamed incorrect naming of 'toolbar' to 'tipbar'
+
+
+## [0.0.4] Added Features - 2022-07-05
+
+### Added
+- Site Settings - Branding Icon

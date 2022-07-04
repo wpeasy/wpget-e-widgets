@@ -28,10 +28,7 @@ class Module_Controller
     {
         $post_id = get_the_ID();
         $document = Plugin::$instance->documents->get($post_id, false);
-        $state = null;
-        if($document){
-            $state = $document->get_settings('wpg_use_wireframe_styles');
-        }
+        $state = $document? $document->get_settings('wpg_use_wireframe_styles') : null;
 
         if($state == 'yes'){
             $classes[] = 'wpg_use_wireframe_styles';

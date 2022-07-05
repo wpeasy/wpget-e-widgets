@@ -413,12 +413,12 @@ class Basic_TipBar_Widget extends Widget_Base
 
 
         ?>
-        <div <?= $this->get_render_attribute_string('wrapper_main') ?>>
-            <div <?= $this->get_render_attribute_string('wrapper_label') ?>>
+        <div <?php echo $this->get_render_attribute_string('wrapper_main') ?>>
+            <div <?php echo $this->get_render_attribute_string('wrapper_label') ?>>
                 <div class="wpg-icon"><?php Icons_Manager::render_icon($settings['label_icon'], ['aria-hidden' => 'true']); ?></div>
-                <div <?= $this->get_render_attribute_string('tip_label') ?>><?= $settings['tip_label'] ?></div>
+                <div <?php echo $this->get_render_attribute_string('tip_label') ?>><?php echo $settings['tip_label'] ?></div>
             </div>
-            <div <?= $this->get_render_attribute_string('tip_content') ?>><?= $settings['tip_content'] ?></div>
+            <div <?php echo $this->get_render_attribute_string('tip_content') ?>><?php echo $settings['tip_content'] ?></div>
             <div>
 
             </div>

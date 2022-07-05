@@ -17,15 +17,15 @@ This is our initial release of the plugin
 
 ### Added
 - Touch events 
-- Event on frame change "wpg/ScrollSequence/frame"
+- Event on frame change "wpg/Scroll_Sequence/frame"
 
-#### "wpg/ScrollSequence/frame"
+#### "wpg/Scroll_Sequence/frame"
 Every time the frame changes this event is dispatched on window.
 The Container ID and teh current frame are in ethe event detail
 
 eg.
 <pre>
-window.addEventListener('wpg/ScrollSequence/frame', e => { 
+window.addEventListener('wpg/Scroll_Sequence/frame', e => { 
     const {id, frame} = e.detail;
     console.log('id': id);
     console.log('frame': frame);

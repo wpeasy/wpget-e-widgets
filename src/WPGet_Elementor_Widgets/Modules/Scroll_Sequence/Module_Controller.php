@@ -1,8 +1,9 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Modules\TipBar;
+namespace WPGet_Elementor_Widgets\Modules\Scroll_Sequence;
+
 use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
-use WPGet_Elementor_Widgets\Modules\TipBar\Widgets\Basic_TipBar_Widget;
+use WPGet_Elementor_Widgets\Modules\Scroll_Sequence\Widgets\Scroll_Sequence_Basic_Widget;
 
 class Module_Controller extends Module_Controller_Base
 {
@@ -27,7 +28,7 @@ class Module_Controller extends Module_Controller_Base
     public function get_config()
     {
         return [
-            'plugin_dependencies' => 'elementor/elementor.php',
+            'plugin_dependencies' => ['elementor/elementor.php'],
             'name' => 'Tip Bar Widgets',
             'description' => 'Widgets for displaying tips',
             'can_disable' => true
@@ -40,10 +41,10 @@ class Module_Controller extends Module_Controller_Base
     public function get_widgets()
     {
         return [
-            'Basic Tip Bar' => [
-                'class' => Basic_TipBar_Widget::class,
+            'Basic Scroll Sequence' => [
+                'class' => Scroll_Sequence_Basic_Widget::class,
                 'can_disable' => true,
-                'description' => 'Basic Tip Bar Widget',
+                'description' => 'Basic Scroll Sequence Widget',
                 'plugin_dependencies' => []
             ]
         ];

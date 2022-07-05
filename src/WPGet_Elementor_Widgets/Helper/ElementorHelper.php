@@ -10,6 +10,19 @@ class ElementorHelper
         return is_plugin_active( 'elementor/elementor.php' );
     }
 
+    public static function has_all_dependancies($dependancies)
+    {
+        if(is_string($dependancies)){
+            return is_plugin_active($dependancies);
+        }
+
+        foreach($dependancies as $dep){
+            if(false === is_plugin_active($dep))
+                return false;
+        }
+        return true;
+    }
+
     public static function is_elementor_pro_active()
     {
         return is_plugin_active( 'elementor-pro/elementor-pro.php' );

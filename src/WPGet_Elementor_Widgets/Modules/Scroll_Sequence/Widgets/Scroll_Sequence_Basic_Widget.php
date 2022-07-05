@@ -1,6 +1,6 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Modules\ScrollSequence\Widgets;
+namespace WPGet_Elementor_Widgets\Modules\Scroll_Sequence\Widgets;
 
 use Elementor\Controls_Manager;
 use Elementor\Widget_Base;
@@ -206,16 +206,16 @@ class Scroll_Sequence_Basic_Widget extends Widget_Base
 
         $frameLoop = @$settings['frame_loop'] === 'yes'? 'yes' : 'no';
         ?>
-        <div <?= $this->get_render_attribute_string('wrapper_main') ?>>
-            <?= $images ?>
+        <div <?php echo $this->get_render_attribute_string('wrapper_main') ?>>
+            <?php echo $images ?>
         </div>
         <script>
             window.addEventListener('wpg/ScrollSequence/load', ()=>{
                 const el = new window.wpg.ScrollSequence(
-                    "<?= $settings['wrapper_container_id'] ?>",
-                    <?= $confJSON ?>,
-                    "<?= $frameLoop ?>",
-                    <?= $settings['preload_frames'] ?>
+                    "<?php echo $settings['wrapper_container_id'] ?>",
+                    <?php echo $confJSON ?>,
+                    "<?php echo $frameLoop ?>",
+                    <?php echo $settings['preload_frames'] ?>
                 );
                 el.methods.init();
             })

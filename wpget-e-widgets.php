@@ -14,6 +14,7 @@
 namespace WPGet_WPG_WIDGETS_Widgets_Plugin;
 
 use WPGet_Elementor_Widgets\Application;
+use WPGet_Elementor_Widgets\Helper\ElementorHelper;
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
@@ -30,5 +31,12 @@ define( 'WPG_WIDGETS_TEXT_DOMAIN', 'wpget-e-widgets');
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-Application::instance();
+//Use action to only run if Elementor is active
+add_action('elementor/init', function (){
+    Application::instance();
+});
+
+
+
+
 

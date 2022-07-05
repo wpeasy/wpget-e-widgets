@@ -4,8 +4,9 @@ namespace WPGet_Elementor_Widgets\Modules\Site_Settings_General;
 use Elementor\Core\Kits\Documents\Kit;
 use Elementor\Plugin;
 use WPGet_Elementor_Widgets\Helper\ElementorHelper;
+use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
 
-class Module_Controller
+class Module_Controller extends Module_Controller_Base
 {
     private static $_instance = null;
 
@@ -18,8 +19,31 @@ class Module_Controller
     }
     public function __construct()
     {
+        parent::__construct();
         add_action('init', [$this, 'wp_init']);
         add_action( 'elementor/editor/footer', [$this, 'print_settings']);
+    }
+
+    /*
+     * Widgets registered here will register when init() is called
+     */
+    public function get_widgets()
+    {
+        return [];
+    }
+
+    /*
+     * Used by Module_Loader to check for plugin dependencies
+     * Also, will be used for info on the Admin panel
+     */
+    public function get_config()
+    {
+        return [
+            'plugin_dependencies' => ['elementor/elementor.php'],
+            'name' => 'Common Site Settings',
+            'description' => 'WPGet settings for the Site',
+            'can_disable' => false
+        ];
     }
 
     public function wp_init(){

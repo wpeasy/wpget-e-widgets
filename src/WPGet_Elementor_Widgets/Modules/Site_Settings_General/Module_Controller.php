@@ -3,8 +3,8 @@ namespace WPGet_Elementor_Widgets\Modules\Site_Settings_General;
 
 use Elementor\Core\Kits\Documents\Kit;
 use Elementor\Plugin;
-use WPGet_Elementor_Widgets\Helper\ElementorHelper;
-use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Base\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Helper\Elementor_Helper;
 
 class Module_Controller extends Module_Controller_Base
 {
@@ -47,7 +47,7 @@ class Module_Controller extends Module_Controller_Base
     }
 
     public function wp_init(){
-        if(ElementorHelper::is_elementor_pro_active()){
+        if(Elementor_Helper::is_elementor_pro_active()){
             add_action( 'elementor/kit/register_tabs', [ $this, 'init_site_settings' ], 1, 40 );
         }
     }

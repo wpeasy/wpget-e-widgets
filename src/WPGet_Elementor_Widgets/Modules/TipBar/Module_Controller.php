@@ -1,7 +1,7 @@
 <?php
 
 namespace WPGet_Elementor_Widgets\Modules\TipBar;
-use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Base\Module_Controller_Base;
 use WPGet_Elementor_Widgets\Modules\TipBar\Widgets\Basic_TipBar_Widget;
 
 class Module_Controller extends Module_Controller_Base

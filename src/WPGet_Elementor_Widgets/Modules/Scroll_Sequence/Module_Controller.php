@@ -2,7 +2,7 @@
 
 namespace WPGet_Elementor_Widgets\Modules\Scroll_Sequence;
 
-use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Base\Module_Controller_Base;
 use WPGet_Elementor_Widgets\Modules\Scroll_Sequence\Widgets\Scroll_Sequence_Basic_Widget;
 
 class Module_Controller extends Module_Controller_Base

@@ -40,7 +40,7 @@ class Application
 
     public function editor_enqueue_scripts()
     {
-        /* CSS jsu fro the Elementor Editor */
+        /* CSS just for the Elementor Editor */
         wp_enqueue_style('wpg-style-editor', WPG_WIDGETS_URL . 'assets/css/editor.css');
     }
 

@@ -2,8 +2,8 @@
 
 namespace WPGet_Elementor_Widgets;
 
-use WPGet_Elementor_Widgets\Helper\ElementorHelper;
-use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Base\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Helper\Elementor_Helper;
 
 class Module_Loader
 {
@@ -38,7 +38,7 @@ class Module_Loader
                 $conf = $module->get_config();
                 /*@todo add check for enable once admin panel has been done */
                 if(!empty($conf['plugin_dependencies'])){
-                    $ok = ElementorHelper::has_all_dependancies($conf['plugin_dependencies']);
+                    $ok = Elementor_Helper::has_all_dependancies($conf['plugin_dependencies']);
                     if($ok){
                         $module->init();
                     }else{

@@ -11,13 +11,19 @@ class Scroll_Sequence_Basic_Widget extends Widget_Base
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-        wp_register_script('wpg-scroll-sequence', WPG_WIDGETS_URL . 'assets/js/scroll-sequence-basic.js');
+        wp_register_script('wpg-scroll-sequence-basic', WPG_WIDGETS_URL . 'assets/js/scroll-sequence-basic.js');
+        wp_register_style('wpg-scroll-sequence', WPG_WIDGETS_URL . 'assets/css/scroll-sequence.css');
     }
 
-    public function get_script_depends() {
+    public function get_script_depends()
+    {
+        return [ 'wpg-scroll-sequence-basic' ];
+    }
+
+    public function get_style_depends()
+    {
         return [ 'wpg-scroll-sequence' ];
     }
-
     public function get_name()
     {
         return 'basic_scroll_sequence';

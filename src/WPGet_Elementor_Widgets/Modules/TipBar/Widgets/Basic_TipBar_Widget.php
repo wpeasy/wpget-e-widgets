@@ -13,6 +13,17 @@ use Elementor\Widget_Base;
 class Basic_TipBar_Widget extends Widget_Base
 {
 
+    public function __construct($data = [], $args = null)
+    {
+        parent::__construct($data, $args);
+        wp_register_style('wpg-tipbar', WPG_WIDGETS_URL . 'assets/css/tipbar.css');
+    }
+
+    public function get_style_depends()
+    {
+        return [ 'wpg-tipbar' ];
+    }
+
     public function get_name()
     {
         return 'basic_tipbar';

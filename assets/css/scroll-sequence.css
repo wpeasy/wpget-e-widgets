@@ -1,0 +1,38 @@
+/**********************
+ --- Basic Scroll Sequence --- */
+
+/* Overflow hidden so we can position inactive frames outside of the  container */
+.wpg_scroll_sequence_basic {
+    line-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.wpg_scroll_sequence_basic .image_item {
+    width: 100%; /* Default Width */
+}
+
+/*
+Editor only, switch to hide/show image frames
+ */
+.elementor-editor-active .wpg_scroll_sequence_basic.hide_sequence .image_item:nth-of-type(n+2) {
+    display: none;
+}
+
+/*
+Using positioning and top to hide non-active images.
+I tried "display:none", Chrome will not preload images with display set to none.
+This requires the parent container overflow set to hidden.
+ */
+body:not(.elementor-editor-active) .wpg_scroll_sequence_basic .image_item {
+    position: absolute;
+    top: -10000px;
+    z-index: 1;
+}
+/* Make active image position relative so it fills the container space */
+body:not(.elementor-editor-active) .wpg_scroll_sequence_basic .image_item.active {
+    z-index: 99;
+    position: relative;
+    top: 0;
+    left: 0;
+}

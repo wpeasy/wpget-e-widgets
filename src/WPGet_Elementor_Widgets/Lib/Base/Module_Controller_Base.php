@@ -1,8 +1,9 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Lib;
+namespace WPGet_Elementor_Widgets\Lib\Base;
 
 use Elementor\Plugin;
+
 
 abstract class Module_Controller_Base
 {

@@ -1,0 +1,64 @@
+.wpg_button_reveal {
+
+}
+/*
+Base Styles
+ */
+.wpg_button_reveal .wpg_button_reveal__button{
+    padding: var(--wpg-spacing-small);
+}
+
+.wpg_button_reveal .wpg_button_reveal__content {
+    padding: var(--wpg-spacing-small);
+}
+
+/*
+Alignment
+ */
+.wpg_button_reveal-align-start .elementor-button-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.wpg_button_reveal-align-center .elementor-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wpg_button_reveal-align-end .elementor-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.wpg_button_reveal-align-justify .elementor-button-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+Content open/closed
+Will do this with jQuery. Pure CSS has a limitation where the max-height myst be a fixed number
+ */
+.elementor-widget-button_reveal .wpg_button_reveal__content{
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    height: auto;
+}
+.elementor-widget-button_reveal.collapsed .wpg_button_reveal__content{
+    height: 0;
+}
+
+
+ /* Wireframe Styles */
+.wpg_use_wireframe_styles .wpg_button_reveal .wpg_button_reveal__button {
+    border: var(--wireframe-border);
+    background-color: var(--wireframe-bg-color);
+    box-shadow: var(--wireframe-box-shadow-small);
+}
+
+.wpg_use_wireframe_styles .wpg_button_reveal .wpg_button_reveal__content {
+    border: var(--wireframe-border);
+    background-color: var(--wireframe-bg-color);
+    box-shadow: var(--wireframe-box-shadow-large);
+}

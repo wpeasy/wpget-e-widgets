@@ -1,8 +1,8 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Helper;
+namespace WPGet_Elementor_Widgets\Lib\Helper;
 
-class ElementorHelper
+class Elementor_Helper
 {
 
     public static function is_elementor_active()

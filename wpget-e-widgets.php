@@ -14,7 +14,7 @@
 namespace WPGet_WPG_WIDGETS_Widgets_Plugin;
 
 use WPGet_Elementor_Widgets\Application;
-use WPGet_Elementor_Widgets\Helper\ElementorHelper;
+
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.

@@ -1,0 +1,34 @@
+/**********************
+ --- Basic TipBar --- */
+
+/* Global Styles */
+.wpg_tipbar_basic {
+    display: flex;
+    flex-direction: column;
+}
+
+.wpg_tipbar_basic__label {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    bottom: -1rem;
+    padding: var(--wpg-spacing-small);
+}
+
+.wpg_tipbar_basic__content {
+    padding: var(--wpg-spacing-medium);
+    padding-top: var(--wpg-spacing-large);
+}
+
+/* Wireframe Styles */
+.wpg_use_wireframe_styles .wpg_tipbar_basic__label {
+    border: var(--wireframe-border);
+    background-color: var(--wireframe-bg-color);
+    box-shadow: var(--wireframe-box-shadow-small);
+}
+
+.wpg_use_wireframe_styles .wpg_tipbar_basic__content {
+    border: var(--wireframe-border);
+    background-color: var(--wireframe-bg-color);
+    box-shadow: var(--wireframe-box-shadow-large);
+}

@@ -3,8 +3,8 @@
 namespace WPGet_Elementor_Widgets\Modules\Page_Settings_General;
 
 use Elementor\Plugin;
-use WPGet_Elementor_Widgets\Helper\ElementorHelper;
-use WPGet_Elementor_Widgets\Lib\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Base\Module_Controller_Base;
+use WPGet_Elementor_Widgets\Lib\Helper\Elementor_Helper;
 
 
 class Module_Controller extends Module_Controller_Base
@@ -63,7 +63,7 @@ class Module_Controller extends Module_Controller_Base
 
     public function load_scripts()
     {
-        if(ElementorHelper::is_edit_mode()){
+        if(Elementor_Helper::is_edit_mode()){
             wp_register_script('WPG-page-settings', WPG_WIDGETS_URL . '/assets/js/editor-page-settings.js', ['jquery']);
             wp_enqueue_script('WPG-page-settings');
         }

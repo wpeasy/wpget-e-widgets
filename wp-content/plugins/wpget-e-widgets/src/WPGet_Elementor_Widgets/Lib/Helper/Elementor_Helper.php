@@ -10,14 +10,27 @@ class Elementor_Helper
         return is_plugin_active( 'elementor/elementor.php' );
     }
 
+    /**
+     * @param $dependancies
+     * @return bool
+     */
     public static function has_all_dependancies($dependancies)
     {
         if(is_string($dependancies)){
             return is_plugin_active($dependancies);
         }
 
+        /*
+         * Handle arrays from config
+         * [
+         *  "name"=>"Display Name"
+         *  "path"=>"WP plugin path"
+         * ]
+         *
+         * @see https://developer.wordpress.org/reference/functions/is_plugin_active/
+         */
         foreach($dependancies as $dep){
-            if(false === is_plugin_active($dep))
+            if(false === is_plugin_active($dep['path']))
                 return false;
         }
         return true;

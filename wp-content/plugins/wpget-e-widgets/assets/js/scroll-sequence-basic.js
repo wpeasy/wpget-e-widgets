@@ -19,12 +19,12 @@
         /* Public Methods */
         this.methods.init = () => {
             if(undefined === this.myContainerID || '' === this.myContainerID){
-                console.error("Error: Scroll_Sequence ContainerID not provided");
+                console.error("Error: WPGet_Mouse_Wheel ContainerID not provided");
                 return false;
             }
             this.targetSection = document.getElementById(this.myContainerID);
             if(null === this.targetSection){
-                console.error("Error: Scroll_Sequence ContainerID is not valid");
+                console.error("Error: WPGet_Mouse_Wheel ContainerID is not valid");
                 return false;
             }
             this.imageItems = this.targetSection.querySelectorAll('.image_item');
@@ -146,7 +146,7 @@
             if (this.myScrollBehaviour !== false) {
                 this.targetSection.scrollIntoView(this.myScrollBehaviour)
             }
-            const evt = new CustomEvent('wpg/Scroll_Sequence/frame', {detail: {id: this.myContainerID, frame: this.currentImage}});
+            const evt = new CustomEvent('wpg/WPGet_Mouse_Wheel/frame', {detail: {id: this.myContainerID, frame: this.currentImage}});
             w.dispatchEvent(evt);
             _updateItem();
         }

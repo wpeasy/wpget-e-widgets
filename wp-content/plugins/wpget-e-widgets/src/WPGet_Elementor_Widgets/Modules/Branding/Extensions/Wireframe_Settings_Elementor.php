@@ -1,21 +1,12 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Modules\Page_Settings_General;
+namespace WPGet_Elementor_Widgets\Modules\Branding\Extensions;
 
 use Elementor\Controls_Manager;
 use Elementor\Core\DocumentTypes\PageBase;
 
-class Page_Settings
+class Wireframe_Settings_Elementor
 {
-    private static $_instance = null;
-
-    public static function instance(){
-        if(null === self::$_instance){
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
-
     public function __construct()
     {
         add_action( 'elementor/documents/register_controls', [$this,'add_elementor_page_settings_controls'] );
@@ -31,7 +22,7 @@ class Page_Settings
         $element->start_controls_section(
             'wpg_page_settings',
             [
-                'label' => __('WPGet SiteSettings', WPG_WIDGETS_TEXT_DOMAIN),
+                'label' => __('WPGet Page Settings', WPG_WIDGETS_TEXT_DOMAIN),
                 'tab' => Controls_Manager::TAB_SETTINGS,
             ]
         );

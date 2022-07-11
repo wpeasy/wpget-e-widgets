@@ -20,14 +20,17 @@
     padding-top: var(--wpg-spacing-large);
 }
 
-/* Wireframe Styles */
-.wpg_use_wireframe_styles .wpg_tipbar_basic__label {
+/*####################
+Wireframe Styles
+Visible of Page Settings "Use Wireframe Styles" is set to "Yes"
+####################*/
+body.wpg_use_wireframe_styles .wpg_tipbar_basic__label {
     border: var(--wireframe-border);
     background-color: var(--wireframe-bg-color);
     box-shadow: var(--wireframe-box-shadow-small);
 }
 
-.wpg_use_wireframe_styles .wpg_tipbar_basic__content {
+body.wpg_use_wireframe_styles .wpg_tipbar_basic__content {
     border: var(--wireframe-border);
     background-color: var(--wireframe-bg-color);
     box-shadow: var(--wireframe-box-shadow-large);

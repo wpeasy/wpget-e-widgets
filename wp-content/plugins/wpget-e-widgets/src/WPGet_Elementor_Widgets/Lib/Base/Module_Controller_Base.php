@@ -16,7 +16,12 @@ abstract class Module_Controller_Base
 
     /* Moved out of constructor so we can check for status first */
     public function init(){
+
+        /*@todo move to init */
         add_action('elementor/widgets/widgets_registered' , [$this, 'register_widgets']);
+
+        add_action( 'init', [$this, 'register_extensions']);
+
         do_action($this->get_id(). '_initialised');
         //e.g "Scroll_Sequence_Basic_Widget_initialised"  check config.php for the "id"
     }
@@ -60,6 +65,7 @@ abstract class Module_Controller_Base
 
     public function register_widgets()
     {
+
         if($this->get_widgets()){
             foreach ($this->get_widgets() as $widget_config){
                 $instance = new $widget_config['class']();
@@ -67,7 +73,15 @@ abstract class Module_Controller_Base
                 Plugin::instance()->widgets_manager->register($instance);
             }
         }
+    }
 
-
+    public function register_extensions()
+    {
+        if($this->get_extensions()){
+            foreach ($this->get_extensions() as $config){
+                //@todo check if enabled once Admin panel is done
+                $instance = $config['class']::instance();
+            }
+        }
     }
 }

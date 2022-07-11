@@ -16,7 +16,7 @@ class Basic_TipBar_Widget extends Widget_Base
     public function __construct($data = [], $args = null)
     {
         parent::__construct($data, $args);
-        wp_register_style('wpg-tipbar', WPG_WIDGETS_URL . 'assets/css/tipbar.css');
+        wp_register_style('wpg-tipbar',  plugin_dir_url(dirname(__FILE__)) . '/assets/css/frontend.css');
     }
 
     public function get_style_depends()

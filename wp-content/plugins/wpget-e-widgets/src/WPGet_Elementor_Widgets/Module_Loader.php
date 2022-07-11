@@ -11,6 +11,7 @@ class Module_Loader
 
 
     private $_global_module_config = [];
+    private $_loaded_modules = [];
 
     /**
      * @return Module_Loader|null
@@ -20,6 +21,7 @@ class Module_Loader
         if(null === self::$_instance){
             self::$_instance = new self();
         }
+
         return self::$_instance;
     }
 
@@ -61,23 +63,30 @@ class Module_Loader
             if (class_exists($class_name)) {
                 /**@var $module Module_Controller_Base */
                 $module = $class_name::instance();
+                $this->_loaded_modules[] = $module;
+            }
+        }
+        add_action('elementor/init', [$this, 'init_loaded_modules']);
+    }
 
-                //Check if module has active dependencies
-                $module_config = $module->get_config();
-                $dependencies = $module->get_dependencies();
-                $has_dependencies = $dependencies ? Elementor_Helper::has_all_dependancies($dependencies) : true;
-                $module_config['has_all_dependencies_active'] = $has_dependencies;
-                //Register the module config in our global config
-                $this->_register_module_config($module_config);
+    public function init_loaded_modules()
+    {
+        foreach ($this->_loaded_modules as $module){
+            //Check if module has active dependencies
+            $module_config = $module->get_config();
+            $dependencies = $module->get_dependencies();
+            $has_dependencies = $dependencies ? Elementor_Helper::has_all_dependancies($dependencies) : true;
+            $module_config['has_all_dependencies_active'] = $has_dependencies;
+            //Register the module config in our global config
+            $this->_register_module_config($module_config);
 
-                /*@todo add check for enable once admin panel has been done and update "is_enabled"*/
-                $module_config['is_enabled'] = true;
+            /*@todo add check for enable once admin panel has been done and update "is_enabled"*/
+            $module_config['is_enabled'] = true;
 
-                if ($has_dependencies && $module_config['is_enabled']) {
-                    $module->init();
-                } else {
-                    //@todo report warning if dependencies aren't met, or just don't init ?
-                }
+            if ($has_dependencies && $module_config['is_enabled']) {
+                $module->init();
+            } else {
+                //@todo report warning if dependencies aren't met, or just don't init ?
             }
         }
     }

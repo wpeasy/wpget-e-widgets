@@ -31,10 +31,9 @@ define( 'WPG_WIDGETS_TEXT_DOMAIN', 'wpget-e-widgets');
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-//Use action to only run if Elementor is active
-add_action('elementor/init', function (){
-    Application::instance();
-});
+Application::instance();
+
+
 
 
 

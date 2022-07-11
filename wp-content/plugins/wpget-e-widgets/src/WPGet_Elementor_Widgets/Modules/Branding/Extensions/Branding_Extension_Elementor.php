@@ -1,15 +1,12 @@
 <?php
 
-namespace WPGet_Elementor_Widgets\Modules\Site_Settings_General;
-
+namespace WPGet_Elementor_Widgets\Modules\Branding\Extensions;
 
 use Elementor\Controls_Manager;
 use Elementor\Core\Kits\Documents\Tabs\Tab_Base;
 
-class Site_Settings extends Tab_Base
+class Branding_Extension_Elementor extends Tab_Base
 {
-
-
     public function get_id()
     {
         return 'settings-wpget';
